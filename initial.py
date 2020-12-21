@@ -161,8 +161,6 @@ class Multi_converA_tableC(tk.Frame):
         tk.Frame.__init__(self, master)
         tk.Label(self, text="桌子", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         tk.Button(self, text="Look", command=lambda: master.switch_frame(Multi_Look_converA_tableC)).pack()
-        tk.Button(self, text="Move", command=lambda: master.switch_frame()).pack()
-        tk.Button(self, text="Talk", command=lambda: master.switch_frame(Multi_Talk)).pack()
         tk.Button(self, text="Use", command=lambda: master.switch_frame(Multi_Use_converA_tableC)).pack()
         tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_conver)).pack()
 
@@ -187,7 +185,7 @@ class Multi_Use_converA_tableC(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Button(self, text="電腦", command=lambda: master.switch_frame(Multi_Use_converA_tableC_computer)).pack()
-        tk.Button(self, text="Cancel", command=lambda: master.switch_frame()).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_converA_tableC)).pack()
 
 
 class Multi_Use_converA_tableC_computer(tk.Frame):
