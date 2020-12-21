@@ -19,7 +19,7 @@ class SampleApp(tk.Tk):
 class Campus(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        tk.Label(self, text="Campus", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Label(self, text="校園", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         tk.Button(self, text="Look",
                   command=lambda: master.switch_frame(Campus_Look)).pack()
         tk.Button(self, text="Move",
@@ -32,7 +32,7 @@ class Campus(tk.Frame):
 class Multi(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        tk.Label(self, text="Multi", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Label(self, text="綜合大樓", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         tk.Button(self, text="Look",
                   command=lambda: master.switch_frame(Multi_Look)).pack()
         tk.Button(self, text="Move",
@@ -41,11 +41,13 @@ class Multi(tk.Frame):
                   command=lambda: master.switch_frame(Multi_Talk)).pack()
         tk.Button(self, text="Use",
                   command=lambda: master.switch_frame(Multi_Use)).pack()
+        tk.Button(self, text="Cancel",
+                  command=lambda: master.switch_frame(Campus)).pack()
 
 class Dorm(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        tk.Label(self, text="Dorm", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Label(self, text="水源宿舍", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         tk.Button(self, text="Look",
                   command=lambda: master.switch_frame(Dorm_Look)).pack()
         tk.Button(self, text="Move",
@@ -54,11 +56,13 @@ class Dorm(tk.Frame):
                   command=lambda: master.switch_frame(Dorm_Talk)).pack()
         tk.Button(self, text="Use",
                   command=lambda: master.switch_frame(Dorm_Use)).pack()
+        tk.Button(self, text="Cancel",
+                  command=lambda: master.switch_frame(Campus)).pack()
 
 class Social_Science(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        tk.Label(self, text="Social_Science", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Label(self, text="社科院", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         tk.Button(self, text="Look",
                   command=lambda: master.switch_frame(Social_Science_Look)).pack()
         tk.Button(self, text="Move",
@@ -67,11 +71,13 @@ class Social_Science(tk.Frame):
                   command=lambda: master.switch_frame(Social_Science_Talk)).pack()
         tk.Button(self, text="Use",
                   command=lambda: master.switch_frame(Social_Science_Use)).pack()
+        tk.Button(self, text="Cancel",
+                  command=lambda: master.switch_frame(Campus)).pack()
 
 class Administration(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        tk.Label(self, text="Administration", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Label(self, text="行政大樓", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         tk.Button(self, text="Look",
                   command=lambda: master.switch_frame(Administration_Look)).pack()
         tk.Button(self, text="Move",
@@ -80,11 +86,13 @@ class Administration(tk.Frame):
                   command=lambda: master.switch_frame(Administration_Talk)).pack()
         tk.Button(self, text="Use",
                   command=lambda: master.switch_frame(Administration_Use)).pack()
+        tk.Button(self, text="Cancel",
+                  command=lambda: master.switch_frame(Campus)).pack()
 
 class Counsel(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        tk.Label(self, text="Counsel", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Label(self, text="心輔中心", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         tk.Button(self, text="Look",
                   command=lambda: master.switch_frame(Counsel_Look)).pack()
         tk.Button(self, text="Move",
@@ -93,6 +101,8 @@ class Counsel(tk.Frame):
                   command=lambda: master.switch_frame(Counsel_Talk)).pack()
         tk.Button(self, text="Use",
                   command=lambda: master.switch_frame(Counsel_Use)).pack()
+        tk.Button(self, text="Cancel",
+                  command=lambda: master.switch_frame(Campus)).pack()
 
 class Bus(tk.Frame):
     def __init__(self, master):
@@ -106,6 +116,8 @@ class Bus(tk.Frame):
                   command=lambda: master.switch_frame(Bus_Talk)).pack()
         tk.Button(self, text="Use",
                   command=lambda: master.switch_frame(Bus_Use)).pack()
+        tk.Button(self, text="Cancel",
+                  command=lambda: master.switch_frame(Campus)).pack()
 
 class Campus_Move(tk.Frame):
     def __init__(self, master):
