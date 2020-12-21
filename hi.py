@@ -49,3 +49,15 @@ my_button3 = Button(my_window, textvariable = label_var3, command = click_next3)
 my_button3.pack()
 
 my_window.mainloop()
+
+class Campus_Move(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)        
+        tk.Button(self, text="綜合大樓").pack()
+        tk.Button(self, text="社科院").pack()
+        tk.Button(self, text="水源宿舍").pack()
+        tk.Button(self, text="心輔中心").pack()
+        tk.Button(self, text="行政大樓").pack()
+        tk.Button(self, text="公車站").pack()
+        tk.Button(self, text="Cancel",
+                  command=lambda: master.switch_frame(Campus)).pack()
