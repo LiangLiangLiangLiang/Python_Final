@@ -27,57 +27,6 @@ class Campus(tk.Frame):
         tk.Button(self, text="Talk",command=lambda: master.switch_frame(Campus_Talk)).pack()
         tk.Button(self, text="Use",command=lambda: master.switch_frame(Campus_Use)).pack()
 
-class Multi(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="Multi", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
-        tk.Button(self, text="Look",command=lambda: master.switch_frame(Multi_Look)).pack()
-        tk.Button(self, text="Move",command=lambda: master.switch_frame(Multi_Move)).pack()
-        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Multi_Talk)).pack()
-        tk.Button(self, text="Use",command=lambda: master.switch_frame(Multi_Use)).pack()
-
-class Dorm(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="水源宿舍", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
-        tk.Button(self, text="Move",command=lambda: master.switch_frame(Dorm_Move)).pack()
-
-class Social_Science(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="Social_Science", font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
-        tk.Button(self, text="Look",command=lambda: master.switch_frame(Social_Science_Look)).pack()
-        tk.Button(self, text="Move",command=lambda: master.switch_frame(Social_Science_Move)).pack()
-        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Social_Science_Talk)).pack()
-        tk.Button(self, text="Use",command=lambda: master.switch_frame(Social_Science_Use)).pack()
-
-class Administration(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="Administration", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
-        tk.Button(self, text="Look",command=lambda: master.switch_frame(Administration_Look)).pack()
-        tk.Button(self, text="Move",command=lambda: master.switch_frame(Administration_Move)).pack()
-        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Administration_Talk)).pack()
-        tk.Button(self, text="Use",command=lambda: master.switch_frame(Administration_Use)).pack()
-
-class Counsel(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="Counsel", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
-        tk.Button(self, text="Look",command=lambda: master.switch_frame(Counsel_Look)).pack()
-        tk.Button(self, text="Move",command=lambda: master.switch_frame(Counsel_Move)).pack()
-        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Counsel_Talk)).pack()
-        tk.Button(self, text="Use",command=lambda: master.switch_frame(Counsel_Use)).pack()
-
-class Bus(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="Bus", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
-        tk.Button(self, text="Look",command=lambda: master.switch_frame(Bus_Look)).pack()
-        tk.Button(self, text="Move",command=lambda: master.switch_frame(Bus_Move)).pack()
-        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Bus_Talk)).pack()
-        tk.Button(self, text="Use",command=lambda: master.switch_frame(Bus_Use)).pack()
-
 class Campus_Move(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)            
@@ -89,6 +38,63 @@ class Campus_Move(tk.Frame):
         tk.Button(self, text="公車站",command=lambda: master.switch_frame(Bus)).pack()
         tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus)).pack()
 
+class Multi(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="Multi", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Look",command=lambda: master.switch_frame(Multi_Look)).pack()
+        tk.Button(self, text="Move",command=lambda: master.switch_frame(Multi_Move)).pack()
+        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Multi_Talk)).pack()
+        tk.Button(self, text="Use",command=lambda: master.switch_frame(Multi_Use)).pack()
+        tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
+
+class Dorm(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="水源宿舍", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Move",command=lambda: master.switch_frame(Dorm_Move)).pack()
+        tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
+
+class Social_Science(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="Social_Science", font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Look",command=lambda: master.switch_frame(Social_Science_Look)).pack()
+        tk.Button(self, text="Move",command=lambda: master.switch_frame(Social_Science_Move)).pack()
+        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Social_Science_Talk)).pack()
+        tk.Button(self, text="Use",command=lambda: master.switch_frame(Social_Science_Use)).pack()
+        tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
+
+class Administration(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="Administration", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Look",command=lambda: master.switch_frame(Administration_Look)).pack()
+        tk.Button(self, text="Move",command=lambda: master.switch_frame(Administration_Move)).pack()
+        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Administration_Talk)).pack()
+        tk.Button(self, text="Use",command=lambda: master.switch_frame(Administration_Use)).pack()
+        tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
+
+class Counsel(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="Counsel", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Look",command=lambda: master.switch_frame(Counsel_Look)).pack()
+        tk.Button(self, text="Move",command=lambda: master.switch_frame(Counsel_Move)).pack()
+        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Counsel_Talk)).pack()
+        tk.Button(self, text="Use",command=lambda: master.switch_frame(Counsel_Use)).pack()
+        tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
+
+class Bus(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="Bus", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Look",command=lambda: master.switch_frame(Bus_Look)).pack()
+        tk.Button(self, text="Move",command=lambda: master.switch_frame(Bus_Move)).pack()
+        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Bus_Talk)).pack()
+        tk.Button(self, text="Use",command=lambda: master.switch_frame(Bus_Use)).pack()
+        tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
+
 
 class Dorm_Move(tk.Frame):
     def __init__(self, master):
@@ -98,6 +104,7 @@ class Dorm_Move(tk.Frame):
         tk.Button(self, text="舍監的辦公室",command=lambda: master.switch_frame(Dorm_Janitor)).pack()
         tk.Button(self, text="洗衣間",command=lambda: master.switch_frame(Dorm_Laundry)).pack()
         tk.Button(self, text="後門",command=lambda: master.switch_frame(Dorm_BackDoor)).pack()
+        tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Dorm)).pack()
 d1_Dorm_Room = dict()
 d1_Dorm_Room = {1:"(" + "看到室友站在梯子上弄著燈泡" + ")", 2:"燈泡壞掉了，叫舍監好久了都沒來"}
 class Dorm_Room(tk.Frame):
@@ -123,11 +130,11 @@ d1_Dorm_Janitor = {1:"(" + "咳咳咳" + ")"  + "\n我當了71年的舍監，從
         11:"哇真的很謝謝你^_^" + "\n為了表達我的謝意，這個印章給你!" + "\n相信你以後應該會用到的~", 12:"助人為快樂之本......吧" + "\n印章又能做甚麼...", 
         13:"Next", 14:"Next", 15:"好挖", 16:"前往xxx房間換燈泡",17:"好!" + "(" + "前往洗衣間" + ")",18:"ㄘㄟˊ我根本不用來啊" + "\n回去找舍監",
         19:"(" + "OS:哪來這麼多事可以做" + ")" + "\n好~~~" + "(" + "前往後門" + ")", 20:"跟他說話", 22:"Let's Go!!", 23:"從舍監手中接過印章", 24:"Back to Campus"}
-alist = []
+aline = ""
 class Dorm_Janitor_Talk(tk.Frame):
     def __init__(self, master):
         global state
-        global alist
+        global aline
         tk.Frame.__init__(self, master)
         tk.Label(self, text = d1_Dorm_Janitor[state], font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
         if state == 9:
@@ -136,9 +143,9 @@ class Dorm_Janitor_Talk(tk.Frame):
         elif state == 11:
             tk.Button(self, text = d1_Dorm_Janitor[state + 12],command=lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "獲得了印章!"), master.switch_frame(Dorm_Janitor_Talk)]).pack()
         elif state == 12:
-            tk.Button(self, text = d1_Dorm_Janitor[state + 12],command=lambda: master.switch_frame(Campus)).pack()
+            tk.Button(self, text = d1_Dorm_Janitor[state + 12],command=lambda: master.switch_frame(Dorm_Move)).pack()
             state = 0
-            alist.append("1")
+            aline += "1"
         else:
             tk.Button(self, text = d1_Dorm_Janitor[state + 12],command=lambda: master.switch_frame(Dorm_Janitor_Talk)).pack()
         state += 1
@@ -156,28 +163,27 @@ class Dorm_Laundry(tk.Frame):
             tk.Button(self, text = "Back to Dorm",command=lambda: master.switch_frame(Dorm_Move)).pack()
             state = 0
         state += 1
-state_BackDoor = 1
-d1_Dorm_BackDoor = dict()
-d1_Dorm_BackDoor = {1:"(" + "遇見一個郵差好像在等人" + ")", 2:"ㄟˊ既然同學你出現了，幫我在這裡簽個名然後交給舍監"}
+x = 1
 class Dorm_BackDoor(tk.Frame):
     def __init__(self, master):
-        global state_BackDoor
+        global state
+        global aline
+        global x
         tk.Frame.__init__(self, master)
-        if state_BackDoor == 1:
-            tk.Label(self, text = d1_Dorm_BackDoor[state_BackDoor], font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
-            tk.Button(self, text = "問他找誰",command=lambda: master.switch_frame(Dorm_BackDoor)).pack()
-        elif state_BackDoor == 2:
-            tk.Label(self, text = d1_Dorm_BackDoor[state_BackDoor], font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
-            tk.Button(self, text = "心不甘情不願的簽名了",command=lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "拿到了包裹!"), master.switch_frame(Dorm_BackDoor)]).pack()
-            tk.Button(self, text = "管他三七二十一簽就對了",command=lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "拿到了包裹!"), master.switch_frame(Dorm_BackDoor)]).pack()
-        elif state_BackDoor == 3:
-            tk.Label(self, text = d1_Dorm_BackDoor[state_BackDoor - 1], font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
+        if aline.find("1") == -1 and state == x:
+            tk.Label(self, text = "(" + "看見一個郵差" + ")", font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
+            tk.Button(self, text = "跟他說話",command=lambda: master.switch_frame(Dorm_BackDoor)).pack()
+            x = state
+            state += 1
+        elif aline.find("1") == -1 and state == x + 1:
+            tk.Label(self, text = "..........(" + "一片安靜" + ")", font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
+            tk.Button(self, text = "真無聊，回到宿舍大廳好了",command=lambda: master.switch_frame(Dorm_Move)).pack()
+            x = 1
+            state = 1
+        elif aline.find("1") != -1:
+            tk.Label(self, text = "這裡沒有人了", font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = "Back to Dorm",command=lambda: master.switch_frame(Dorm_Move)).pack()
-        else:
-            tk.Label(self, text = "拿到包裹了，去找舍監吧!", font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
-            tk.Button(self, text = "Back to Dorm",command=lambda: master.switch_frame(Dorm_Move)).pack()
-        state_BackDoor += 1
-    
+        
 class Social_Science_Look(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
