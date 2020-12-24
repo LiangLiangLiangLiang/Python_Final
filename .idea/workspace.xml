@@ -62,6 +62,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="685" y="348" key="#com.jetbrains.python.refactoring.move.PyMakeFunctionTopLevelDialog" timestamp="1608822871990">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state x="685" y="348" key="#com.jetbrains.python.refactoring.move.PyMakeFunctionTopLevelDialog/0.23.1440.823@0.23.1440.823" timestamp="1608822871990" />
     <state width="731" height="212" key="GridCell.Tab.0.bottom" timestamp="1608721561766">
       <screen x="0" y="23" width="1440" height="822" />
     </state>

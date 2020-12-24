@@ -58,6 +58,7 @@ class Multi(tk.Frame):
         tk.Button(self, text="Cancel",
                   command=lambda: master.switch_frame(Campus)).grid(row=4, column=0, columnspan=6, sticky="n"+"e"+"s"+"w")
 
+
 # 從這裡開始都是討論室的部分
 class Multi_Move1(tk.Frame):
     def __init__(self, master):
@@ -192,8 +193,9 @@ class Multi_Use_normaltable_computer(tk.Frame):
 class Multi_get_normaltable(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        tk.Button(self, text="硬幣", command=lambda: master.switch_frame(self.get_coin)).pack()
+        tk.Button(self, text="硬幣", command=self.get_coin).pack()
         tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_table)).pack()
+
 
     def get_coin(self):
         messagebox.showinfo("Congrats!", "你獲得了一枚十元硬幣")
@@ -204,9 +206,19 @@ class Multi_converA_tableC(tk.Frame):
         tk.Frame.__init__(self, master)
         tk.Label(self, text="桌子", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         tk.Button(self, text="Look", command=lambda: master.switch_frame(Multi_Look_converA_tableC)).pack()
-        tk.Button(self, text="Get", command=lambda: master.switch_frame()).pack()
+        tk.Button(self, text="Get", command=lambda: master.switch_frame(Multi_get_ACtable)).pack()
         tk.Button(self, text="Use", command=lambda: master.switch_frame(Multi_Use_converA_tableC)).pack()
         tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_conver)).pack()
+
+
+class Multi_get_ACtable(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="硬幣", command=self.get_coin).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_converA_tableC)).pack()
+
+    def get_coin(self):
+        messagebox.showinfo("Congrats!", "你獲得了一枚十元硬幣")
 
 
 class Multi_Look_converA_tableC(tk.Frame):
@@ -248,7 +260,7 @@ class Multi_Use_converA_tableC_computer(tk.Frame):
     def ord_correct(self):
         if self.ord.get() == "AC":
             messagebox.showinfo("文字轉換器", "4143")
-            tk.Label(self, text="若覺得渴的話不妨到飲料機看看", font=('Helvetica', 12))
+            tk.Label(self, text="若覺得渴的話不妨到飲料機看看", font=('Helvetica', 12)).pack()
         else:
             messagebox.showinfo("文字轉換器", "錯誤資訊，請稍後再輸入")
 
