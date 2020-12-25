@@ -225,13 +225,16 @@ class Social_Science_Library_No(tk.Frame):
     def __init__(self, master):
         global state
         tk.Frame.__init__(self, master)
-        if state == 4 :
+        if state == 4 and y == 0:
             tk.Label(self, text = d1_SS_Library_No[state], font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = d1_SS_Library_No[state + 4],command=lambda: master.switch_frame(Social_Science_Move)).pack()
             state = 0
-        else:
+        elif state != 4 and y == 0:
             tk.Label(self, text = d1_SS_Library_No[state], font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = d1_SS_Library_No[state + 4],command=lambda: master.switch_frame(Social_Science_Library_No)).pack()
+        elif state != 4 and y == 1:
+            tk.Label(self, text = "社科圖關門了!!!", font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
+            tk.Button(self, text = "Back to Campus",command=lambda: master.switch_frame(Campus)).pack()
         state += 1
 class Social_Science_Move(tk.Frame):
     def __init__(self, master):
@@ -241,7 +244,9 @@ class Social_Science_Move(tk.Frame):
         tk.Button(self, text="王道一的教室",command=lambda: master.switch_frame(Social_Science_Wang)).pack()
         tk.Button(self, text="林明仁的教室",command=lambda: master.switch_frame(Social_Science_Lin)).pack()
         tk.Button(self, text="吳聰敏的教室",command=lambda: master.switch_frame(Social_Science_Wu)).pack()
+        tk.Button(self, text="Back to Social Science Library",command=lambda: master.switch_frame(Social_Science_Library)).pack()
 bline = ""
+cline = ""
 d1_Social_Science = dict()
 d2_Social_Science = dict()
 d3_Social_Science = dict()
@@ -258,42 +263,78 @@ class Social_Science_Wang(tk.Frame):
     def __init__(self, master):
         global state
         global bline
+        global cline
+        bline += "1"
         tk.Frame.__init__(self, master)
         tk.Label(self, text = d1_Social_Science[state], font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
         if state != 10:
             tk.Button(self, text = "Next",command = lambda: master.switch_frame(Social_Science_Wang)).pack()
+        elif state == 10 and bline.find("1") != -1 and bline.find("2") != -1 and bline.find("3") != -1 and cline.find("4") == -1:
+            tk.Button(self, text = "早知道上王道一的課這麼無聊，去玩貓就好了" + "\n想去社科院找貓...",command = lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "恭喜你上完三位老師的課!" + "\n去社科院找貓吧!"), master.switch_frame(No_ID_Cat)]).pack()
+            cline += "4"
+            state = 0
         else:
-            tk.Button(self, text = "早知道上王道一的課這麼無聊，去玩貓就好了" + "\nBack to Social Science",command = lambda: master.switch_frame(Social_Science_Move)).pack()
-            bline += "1"
+            tk.Button(self, text = "早知道上王道一的課這麼無聊，就去上林明仁的課就好了" + "\nBack to Social Science",command = lambda: master.switch_frame(Social_Science_Move)).pack()
             state = 0
         state += 1
 class Social_Science_Lin(tk.Frame):
     def __init__(self, master):
         global state
         global bline
+        global cline
+        bline += "2"
         tk.Frame.__init__(self, master)
         tk.Label(self, text = d2_Social_Science[state], font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
         if state != 10:
             tk.Button(self, text = "Next",command = lambda: master.switch_frame(Social_Science_Lin)).pack()
+        elif state == 10 and bline.find("1") != -1 and bline.find("2") != -1 and bline.find("3") != -1 and cline.find("4") == -1:
+            tk.Button(self, text = "早知道上林明仁的課這麼無聊，去玩貓就好了" + "\n想去社科院找貓...",command = lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "恭喜你上完三位老師的課!" + "\n去社科院找貓吧!"), master.switch_frame(No_ID_Cat)]).pack()
+            cline += "4"
+            state = 0
         else:
             tk.Button(self, text = "早知道上林明仁的課這麼無聊，就去上吳聰敏的課就好了" + "\nBack to Social Science",command = lambda: master.switch_frame(Social_Science_Move)).pack()
-            bline += "2"
             state = 0
         state += 1
 class Social_Science_Wu(tk.Frame):
     def __init__(self, master):
         global state
         global bline
+        global cline
+        bline += "3"
         tk.Frame.__init__(self, master)
         tk.Label(self, text = d3_Social_Science[state], font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
         if state != 10:
             tk.Button(self, text = "Next",command = lambda: master.switch_frame(Social_Science_Wu)).pack()
+        elif state == 10 and bline.find("1") != -1 and bline.find("2") != -1 and bline.find("3") != -1 and cline.find("4") == -1:
+            tk.Button(self, text = "早知道上吳聰敏的課這麼無聊，去玩貓就好了" + "\n想去社科院找貓...",command = lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "恭喜你上完三位老師的課!" + "\n去社科院找貓吧!"), master.switch_frame(No_ID_Cat)]).pack()
+            cline += "4"
+            state = 0
         else:
             tk.Button(self, text = "早知道上吳聰敏的課這麼無聊，就去上王道一的課就好了" + "\nBack to Social Science",command = lambda: master.switch_frame(Social_Science_Move)).pack()
-            bline += "3"
             state = 0
         state += 1
-
+d1_No_ID_Cat = dict()
+d1_No_ID_Cat = {1:"ㄟˊ好多貓貓耶:)好可愛XD", 2:"貓:「喵喵喵」",
+        3:"(" + "突然!!!" + ")" + "\n貓嘔吐出管中閔的畢業證書",4:"矮額為甚麼有這種東西...",
+        5:"莫名其妙開始跟貓貓說起話", 6:"我:「喵喵喵」",
+        7:"把它撿起來",8:"算了先收起來" + "\n(" + "Back to Campus" + ")"}
+class No_ID_Cat(tk.Frame):
+    def __init__(self, master):
+        global state
+        global y
+        tk.Frame.__init__(self, master)
+        if state == 3:
+            tk.Label(self, text = d1_No_ID_Cat[state], font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
+            tk.Button(self, text = d1_No_ID_Cat[state + 4],command=lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "拿到了沾滿貓咪口水的管中閔畢業證書!"), master.switch_frame(No_ID_Cat)]).pack()
+        elif state == 4:
+            tk.Label(self, text = d1_No_ID_Cat[state], font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
+            tk.Button(self, text = d1_No_ID_Cat[state + 4],command=lambda: master.switch_frame(Campus)).pack()
+            state = 0
+            y = 1
+        else:
+            tk.Label(self, text = d1_No_ID_Cat[state], font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
+            tk.Button(self, text = d1_No_ID_Cat[state + 4],command=lambda: master.switch_frame(No_ID_Cat)).pack()
+        state += 1
 
 if __name__ == "__main__":
     app = SampleApp()
