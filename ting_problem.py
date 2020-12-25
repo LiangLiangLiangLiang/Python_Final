@@ -36,13 +36,23 @@ class Multi(tk.Frame):
         tk.Button(self, text="Look",
                   command=lambda: master.switch_frame(Multi_Look)).grid(row=2, column=0, columnspan=3, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="Move",
-                  command=lambda: master.switch_frame(Multi_Move)).grid(row=2, column=3, columnspan=3, sticky="n"+"e"+"s"+"w")
+                  command=lambda: master.switch_frame(Multi_Move1)).grid(row=2, column=3, columnspan=3, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="Talk",
                   command=lambda: master.switch_frame(Multi_Talk)).grid(row=3, column=0, columnspan=3, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="Use",
                   command=lambda: master.switch_frame(Multi_Use)).grid(row=3, column=3, columnspan=3, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="Cancel",
                   command=lambda: master.switch_frame(Campus)).grid(row=4, column=0, columnspan=6, sticky="n"+"e"+"s"+"w")
+
+
+class Multi_Move1(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="販賣機", command=lambda: master.switch_frame(Multi_sale)).pack()
+        tk.Button(self, text="綜合大講堂", command=lambda: master.switch_frame(Multi_Audi)).pack()
+        tk.Button(self, text="討論室", command=lambda: master.switch_frame(Multi_conver)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi)).pack()
+
 
 class Dorm(tk.Frame):
     def __init__(self, master):
@@ -131,16 +141,6 @@ class Campus_Move(tk.Frame):
         tk.Button(self, text="Cancel",
                   command=lambda: master.switch_frame(Campus)).grid(row=3, column=0, columnspan=4, sticky="n"+"e"+"s"+"w")
 
-class Multi_Move(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)        
-        tk.Button(self, text="水源宿舍",command=lambda: master.switch_frame(Dorm)).grid(row=0, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="社科院",command=lambda: master.switch_frame(Social_Science)).grid(row=0, column=2, columnspan=2, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="行政大樓",command=lambda: master.switch_frame(Administration)).grid(row=1, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="心輔中心",command=lambda: master.switch_frame(Counsel)).grid(row=1, column=2, columnspan=2, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="公車站",command=lambda: master.switch_frame(Bus)).grid(row=2, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="Cancel",
-                  command=lambda: master.switch_frame(Campus)).grid(row=2, column=2, columnspan=2, sticky="n"+"e"+"s"+"w")
 
 # 這邊是在校園裡對話（跟傅斯年）的部分
 Fudict = {1:"去上課",2:"去反省"}
