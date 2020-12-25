@@ -36,7 +36,7 @@ class Multi(tk.Frame):
         tk.Button(self, text="Look",
                   command=lambda: master.switch_frame(Multi_Look)).grid(row=2, column=0, columnspan=3, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="Move",
-                  command=lambda: master.switch_frame(Multi_Move1)).grid(row=2, column=3, columnspan=3, sticky="n"+"e"+"s"+"w")
+                  command=lambda: master.switch_frame(Multi_Move)).grid(row=2, column=3, columnspan=3, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="Talk",
                   command=lambda: master.switch_frame(Multi_Talk)).grid(row=3, column=0, columnspan=3, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="Use",
@@ -45,13 +45,54 @@ class Multi(tk.Frame):
                   command=lambda: master.switch_frame(Campus)).grid(row=4, column=0, columnspan=6, sticky="n"+"e"+"s"+"w")
 
 
-class Multi_Move1(tk.Frame):
+class Multi_Move(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Button(self, text="販賣機", command=lambda: master.switch_frame(Multi_sale)).pack()
         tk.Button(self, text="綜合大講堂", command=lambda: master.switch_frame(Multi_Audi)).pack()
         tk.Button(self, text="討論室", command=lambda: master.switch_frame(Multi_conver)).pack()
         tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi)).pack()
+
+
+class Multi_Audi(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="綜合大講堂", font=('Helvetica', 18, "bold")).grid(row=0, column=0, columnspan=6, rowspan=2)
+        tk.Button(self, text="talk", command=lambda: master.switch_frame(Multi_Audi_Talk)).grid(row=2, column=3, rowspan=2)
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi)).grid(row=4, column=3, rowspan=2)
+
+
+class Multi_Audi_Talk(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="孔令傑",command=lambda: master.switch_frame(Kong)).grid(row=0, column=0,columnspan=2, sticky="n"+"e"+"s"+"w")
+        tk.Button(self, text="盧信銘",command=lambda: master.switch_frame(Lu)).grid(row=0, column=3,columnspan=2, sticky="n"+"e"+"s"+"w")
+        tk.Button(self, text="Cancel",
+                  command=lambda: master.switch_frame(Multi_Audi)).grid(row=1, column=0,columnspan=6, sticky="n"+"e"+"s"+"w")
+
+# 問題在于要怎麼讓輸入的東東有反應(if/elese的感覺)
+class Kong(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="請寫出一段可以印出“Hello World.”的程式", font=('Helvetica', 18, "bold")).grid(row=0, column=0, columnspan=5, sticky="n"+"e"+"s"+"w")
+        tk.Label(self, text="輸入").grid(row=1, column=0,columnspan=1, sticky="n"+"e"+"s"+"w")
+        self.print_ = tk.StringVar()
+        content = tk.Entry(self, bg="black", fg="white", textvariable=self.print_)
+        content.grid(row=1, column=1, columnspan=4, sticky="n"+"e"+"s"+"w")
+        tk.Button(self, text="Ok",
+                      command=self.Input).grid(row=2, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
+        tk.Button(self, text="Cancel",
+                      command=lambda: master.switch_frame(Multi_Audi)).grid(row=3, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
+
+    def Input(self):
+        if self.print_.get() == "print(\"Hello World.\")":
+            tk.Label(self, text="AC", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
+            tk.Button(self, text="Next",
+                      command=lambda: master.switch_frame(Correct_Image)).grid(row=2, column=0, columnspan=5, sticky="n" + "e" + "s" + "w")
+        else:
+            tk.Label(self, text="WA", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
+
+
 
 
 class Dorm(tk.Frame):
@@ -267,44 +308,6 @@ class Maslow(tk.Frame):
                   command=lambda: master.switch_frame(Counsel_Talk)).grid(row=2, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
 
 # 這裡開始綜合大樓talk
-
-class Multi_Talk(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)        
-        tk.Button(self, text="孔令傑",command=lambda: master.switch_frame(Kong)).grid(row=0, column=0,columnspan=2, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="盧信銘",command=lambda: master.switch_frame(Dorm)).grid(row=0, column=3,columnspan=2, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="Cancel",
-                  command=lambda: master.switch_frame(Campus)).grid(row=1, column=0,columnspan=6, sticky="n"+"e"+"s"+"w")
-
-# 問題在于要怎麼讓輸入的東東有反應(if/elese的感覺)
-
-class Kong(tk.Frame):
-    def __init__(self, master):
-        root = tk.Tk()
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="請寫出一段可以印出“Hello World.”的程式", font=('Helvetica', 18, "bold")).grid(row=0, column=0, columnspan=4, sticky="n"+"e"+"s"+"w")
-        text = tk.Label(root, text="輸入").grid(row=1, column=0,columnspan=1, sticky="n"+"e"+"s"+"w")
-        # tk.Entry(root, bd = 5).pack(side=tk.LEFT)
-        # root = tk.Tk()
-        # root.geometry("300x300")
-        # root.title("Try code")
-
-        content = tk.Entry(root)
-        content.grid(row=1, column=1,columnspan=2, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="Ok",
-                  command=lambda: master.switch_frame(Input)).grid(row=1, column=0,columnspan=4, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="Cancel",
-                  command=lambda: master.switch_frame(Multi_Talk)).grid(row=2, column=0,columnspan=4, sticky="n"+"e"+"s"+"w")
-
-
-class Input(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)        
-    # def check(self):
-        if content.get() == "print(\"Hello World.\")":
-            tk.Label(self, text="AC", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
-        else:
-            tk.Label(self, text="WA", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
 
 
 if __name__ == "__main__":
