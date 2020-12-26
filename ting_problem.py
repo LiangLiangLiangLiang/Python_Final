@@ -2,6 +2,7 @@ try:
     import Tkinter as tk
 except:
     import tkinter as tk
+from tkinter import messagebox
     
 class SampleApp(tk.Tk):
     def __init__(self):
@@ -122,6 +123,7 @@ class Multi_sale(tk.Frame):
     def get_item(self):
         if self.var.get() == 4143:
             messagebox.showinfo("Congrats!", "你獲得一張沒用印的校長聘書")
+            Change_Backpack("Contract")
             self.master.switch_frame(Lead_him_to_next_scene)
 
         else:
@@ -236,7 +238,8 @@ class Multi_get_normaltable(tk.Frame):
 
 
     def get_coin(self):
-        messagebox.showinfo("Congrats!", "你獲得了一枚十元硬幣")
+        tk.messagebox.showinfo("Congrats!", "你獲得了一枚十元硬幣")
+
     # 但我這裡還沒有寫獲得多次硬幣的情況，只先把畫面寫出來而已
 
 class Multi_converA_tableC(tk.Frame):
@@ -257,6 +260,8 @@ class Multi_get_ACtable(tk.Frame):
 
     def get_coin(self):
         messagebox.showinfo("Congrats!", "你獲得了一枚十元硬幣")
+        Change_Backpack("Coin")
+
 
 
 class Multi_Look_converA_tableC(tk.Frame):
@@ -525,14 +530,14 @@ class Maslow(tk.Frame):
 
 def Change_Backpack(thing):  # Change_Backpack('Contract');print(Backpack['Contract'])
     global Thing_Backpack
-    Backpack[thing]=1
+    Thing_Backpack[thing]=1
     return
 
 def Check_Thing(thing):  # Check_Thing('Contract')
     global Thing_Backpack
-    return Backpack[thing]
+    return Thing_Backpack[thing]
 
-Backpack={'Contract':0,'Coin':0,'Seal':0,'Light_Bulb':0,'Gross':0,'ID_Card':0,'Cat_Stick':0,'Diploma':0}
+Thing_Backpack={'Contract':0,'Coin':0,'Seal':0,'Light_Bulb':0,'Gross':0,'ID_Card':0,'Cat_Stick':0,'Diploma':0}
 
 
 if __name__ == "__main__":
