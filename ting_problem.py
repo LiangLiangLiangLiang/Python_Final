@@ -88,11 +88,219 @@ class Kong(tk.Frame):
         if self.print_.get() == "print(\"Hello World.\")":
             tk.Label(self, text="AC", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
             tk.Button(self, text="Next",
-                      command=lambda: master.switch_frame(Correct_Image)).grid(row=2, column=0, columnspan=5, sticky="n" + "e" + "s" + "w")
+                      command=lambda: self.master.switch_frame(Correct_Image)).grid(row=2, column=0, columnspan=5, sticky="n" + "e" + "s" + "w")
         else:
             tk.Label(self, text="WA", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
 
 
+class Correct_Image(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+
+
+class Multi_Move1(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="販賣機", command=lambda: master.switch_frame(Multi_sale)).pack()
+        tk.Button(self, text="綜合大講堂", command=lambda: master.switch_frame(Multi_Audi)).pack()
+        tk.Button(self, text="討論室", command=lambda: master.switch_frame(Multi_conver)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi)).pack()
+
+
+class Multi_sale(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="販賣機", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Label(self, text="請輸入商品代碼", font=('Helvetica', 12)).pack(side="top", fill="x", pady=5)
+        self.var = tk.IntVar()
+        merchan = tk.Entry(self, bg="black", fg="white", textvariable=self.var)
+        merchan.pack()
+        button = tk.Button(self, text="Enter", command=self.get_item)
+        button.pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi)).pack()
+
+    def get_item(self):
+        if self.var.get() == 4143:
+            messagebox.showinfo("Congrats!", "你獲得一張沒用印的校長聘書")
+            self.master.switch_frame(Lead_him_to_next_scene)
+
+        else:
+            messagebox.showinfo("像話嗎", "沒認真上課還敢喝飲料啊")
+
+
+class Lead_him_to_next_scene(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="寫程式真是累人啊，休息是為了走更長遠的路，回去水源宿舍睡覺吧", font=('Helvetica', 12)).pack()
+        tk.Button(self, text="confirm", command=lambda: master.switch_frame(Campus)).pack()
+
+
+class Multi_conver(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="討論室", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="討論室A", command=lambda: master.switch_frame(Multi_converA)).pack()
+        tk.Button(self, text="討論室B", command=lambda: master.switch_frame(Multi_converB)).pack()
+        tk.Button(self, text="討論室C", command=lambda: master.switch_frame(Multi_converC)).pack()
+        tk.Button(self, text="討論室D", command=lambda: master.switch_frame(Multi_converD)).pack()
+        tk.Button(self, text="討論室E", command=lambda: master.switch_frame(Multi_converE)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi)).pack()
+
+
+class Multi_converA(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="討論室A", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="桌子A", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="桌子B", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="桌子C", command=lambda: master.switch_frame(Multi_converA_tableC)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_conver)).pack()
+
+
+class Multi_converB(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="討論室B", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="桌子A", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="桌子B", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="桌子C", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_conver)).pack()
+
+
+class Multi_converC(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="討論室C", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="桌子A", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="桌子B", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="桌子C", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_conver)).pack()
+
+
+class Multi_converD(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="討論室D", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="桌子A", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="桌子B", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="桌子C", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_conver)).pack()
+
+
+class Multi_converE(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="討論室E", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="桌子A", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="桌子B", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="桌子C", command=lambda: master.switch_frame(Multi_table)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_conver)).pack()
+
+
+class Multi_table(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="桌子", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Look", command=lambda: master.switch_frame(Multi_Look_normaltable)).pack()
+        tk.Button(self, text="Use", command=lambda: master.switch_frame(Multi_Use_normaltable)).pack()
+        tk.Button(self, text="Get", command=lambda: master.switch_frame(Multi_get_normaltable)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_conver)).pack()
+
+
+class Multi_Use_normaltable(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="電腦", command=lambda: master.switch_frame(Multi_Use_normaltable_computer)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_table)).pack()
+
+
+class Multi_Look_normaltable(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="桌上只有一個別人的電腦和一枚十元硬幣").pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_table)).pack()
+
+
+class Multi_Use_normaltable_computer(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="不亂使用別人的禮貌是基本禮貌吧", font=('Helvetica', 80, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_table)).pack()
+
+
+class Multi_get_normaltable(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="硬幣", command=self.get_coin).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_table)).pack()
+
+
+    def get_coin(self):
+        messagebox.showinfo("Congrats!", "你獲得了一枚十元硬幣")
+    # 但我這裡還沒有寫獲得多次硬幣的情況，只先把畫面寫出來而已
+
+class Multi_converA_tableC(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="桌子", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Look", command=lambda: master.switch_frame(Multi_Look_converA_tableC)).pack()
+        tk.Button(self, text="Get", command=lambda: master.switch_frame(Multi_get_ACtable)).pack()
+        tk.Button(self, text="Use", command=lambda: master.switch_frame(Multi_Use_converA_tableC)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_conver)).pack()
+
+
+class Multi_get_ACtable(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="硬幣", command=self.get_coin).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_converA_tableC)).pack()
+
+    def get_coin(self):
+        messagebox.showinfo("Congrats!", "你獲得了一枚十元硬幣")
+
+
+class Multi_Look_converA_tableC(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="桌上只有一個電腦和一枚十元硬幣").pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="電腦", command=lambda: master.switch_frame(Multi_Look_computer_converA_tableC)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_converA_tableC)).pack()
+
+
+class Multi_Use_converA_tableC(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="電腦", command=lambda: master.switch_frame(Multi_Use_converA_tableC_computer)).pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_converA_tableC)).pack()
+
+
+class Multi_Look_computer_converA_tableC(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="電腦").pack()
+        tk.Label(self, text="一台亮著的電腦，上面的程式似乎是可以使用的").pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_converA_tableC)).pack()
+
+
+class Multi_Use_converA_tableC_computer(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="文字轉換器", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Label(self, text="剛剛上課夠認真，應該知道答案是什麼吧", font=('Helvetica', 7)).pack(side="top", fill="x")
+        self.ord = tk.StringVar()
+        ord_content = tk.Entry(self, bg="black", fg="white", textvariable=self.ord)
+        ord_content.pack(side="top", fill="x")
+        button = tk.Button(self, text="Enter", command=self.ord_correct)
+        button.pack()
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi_converA_tableC)).pack()
+
+
+    def ord_correct(self):
+        if self.ord.get() == "AC":
+            messagebox.showinfo("文字轉換器", "4143")
+            tk.Label(self, text="若覺得渴的話不妨到飲料機看看", font=('Helvetica', 12)).pack()
+        else:
+            messagebox.showinfo("文字轉換器", "錯誤資訊，請稍後再輸入")
 
 
 class Dorm(tk.Frame):
