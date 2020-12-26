@@ -3,7 +3,7 @@ try:
 except:
     import tkinter as tk
 from tkinter import messagebox
-    
+
 class SampleApp(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
@@ -26,9 +26,7 @@ class Campus(tk.Frame):
         tk.Button(self, text="Move",
                   command=lambda: master.switch_frame(Campus_Move)).grid(row=2, column=3, columnspan=3, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="Talk",
-                  command=lambda: master.switch_frame(Campus_Talk)).grid(row=3, column=0, columnspan=3, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="Use",
-                  command=lambda: master.switch_frame(Campus_Use)).grid(row=3, column=3, columnspan=3, sticky="n"+"e"+"s"+"w")
+                  command=lambda: master.switch_frame(Campus_Talk)).grid(row=2, column=6, columnspan=3, sticky="n"+"e"+"s"+"w")
 
 class Multi(tk.Frame):
     def __init__(self, master):
@@ -45,6 +43,13 @@ class Multi(tk.Frame):
         tk.Button(self, text="Cancel",
                   command=lambda: master.switch_frame(Campus)).grid(row=4, column=0, columnspan=6, sticky="n"+"e"+"s"+"w")
 
+
+class Multi_Look(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="", font=('Helvetica', 12)).grid(row=0, column=0, columnspan=6, rowspan=2)
+        tk.Button(self, text="Cancel",
+                  command=lambda: master.switch_frame(Multi)).grid(row=4, column=0, columnspan=6,sticky="n" + "e" + "s" + "w")
 
 class Multi_Move(tk.Frame):
     def __init__(self, master):
@@ -71,7 +76,7 @@ class Multi_Audi_Talk(tk.Frame):
         tk.Button(self, text="Cancel",
                   command=lambda: master.switch_frame(Multi_Audi)).grid(row=1, column=0,columnspan=6, sticky="n"+"e"+"s"+"w")
 
-# 問題在于要怎麼讓輸入的東東有反應(if/elese的感覺)
+
 class Kong(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -89,14 +94,9 @@ class Kong(tk.Frame):
         if self.print_.get() == "print(\"Hello World.\")":
             tk.Label(self, text="AC", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
             tk.Button(self, text="Next",
-                      command=lambda: self.master.switch_frame(Correct_Image)).grid(row=2, column=0, columnspan=5, sticky="n" + "e" + "s" + "w")
+                      command=lambda: self.master.switch_frame(Multi)).grid(row=2, column=0, columnspan=5, sticky="n" + "e" + "s" + "w")
         else:
             tk.Label(self, text="WA", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
-
-
-class Correct_Image(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
 
 
 class Multi_Move1(tk.Frame):
