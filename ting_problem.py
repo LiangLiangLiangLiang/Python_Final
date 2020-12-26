@@ -88,11 +88,14 @@ class Kong(tk.Frame):
         if self.print_.get() == "print(\"Hello World.\")":
             tk.Label(self, text="AC", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
             tk.Button(self, text="Next",
-                      command=lambda: master.switch_frame(Correct_Image)).grid(row=2, column=0, columnspan=5, sticky="n" + "e" + "s" + "w")
+                      command=lambda: self.master.switch_frame(Correct_Image)).grid(row=2, column=0, columnspan=5, sticky="n" + "e" + "s" + "w")
         else:
             tk.Label(self, text="WA", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
 
 
+class Correct_Image(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
 
 
 class Dorm(tk.Frame):
