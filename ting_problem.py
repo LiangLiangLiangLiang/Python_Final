@@ -164,6 +164,7 @@ class Lu(tk.Frame):
 class Multi_conver(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
+<<<<<<< HEAD
         tk.Label(self, text="討論室", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         tk.Button(self, text="討論室A", command=lambda: master.switch_frame(Multi_converA)).pack()
         tk.Button(self, text="討論室B", command=lambda: master.switch_frame(Multi_converB)).pack()
@@ -559,7 +560,6 @@ class Maslow(tk.Frame):
         tk.Button(self, text="Cancel",
                   command=lambda: master.switch_frame(Counsel_Talk)).grid(row=2, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
 
-def Change_Backpack(thing):  # Change_Backpack('Contract');print(Backpack['Contract'])
 # 這裡開始綜合大樓talk
 
 
