@@ -390,10 +390,10 @@ class Multi_sale(tk.Frame):
         tk.Label(self, text="請投入硬幣", font=('Helvetica', 20)).grid(row=1, column=0, columnspan=2, sticky="nsew")
         coin_have = Check_Thing("Coin")
         if coin_have == 1:
-            tk.Button(self, text="投入", font=('Helvetica', 25, "bold"), command=lambda: master.switch_frame(Multi_sale2)).grid(row=1, column=0, columnspan=2, sticky="nsew")
+            tk.Button(self, text="投入", font=('Helvetica', 25, "bold"), command=lambda: master.switch_frame(Multi_sale_2)).grid(row=1, column=0, columnspan=2, sticky="nsew")
         tk.Button(self, text="Cancel", font=('Helvetica', 25, "bold"), command=lambda: master.switch_frame(Multi)).grid(row=2, column=0, columnspan=2, sticky="nsew")
 
-class Multi_sale2(tk.Frame):
+class Multi_sale_2(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Label(self, text="販賣機", font=('Helvetica', 25, "bold")).grid(row=0, column=0, columnspan=4, sticky="nsew")
