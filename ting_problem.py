@@ -2,6 +2,7 @@ try:
     import Tkinter as tk
 except:
     import tkinter as tk
+from tkinter import messagebox
     
 class SampleApp(tk.Tk):
     def __init__(self):
@@ -41,15 +42,14 @@ class Multi(tk.Frame):
                   command=lambda: master.switch_frame(Campus)).grid(row=4, column=0, columnspan=6, sticky="n"+"e"+"s"+"w")
 
 
-<<<<<<< HEAD
+
 class Multi_Look(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Label(self, text="諾大的大廳裡，大家都抱著一台電腦準備去上今天的商管程，只有你在那邊發呆", font=('Helvetica', 12)).grid(row=0, column=0, columnspan=6, rowspan=2)
         tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi)).grid(row=4, column=0, columnspan=6,sticky="n" + "e" + "s" + "w")
 
-=======
->>>>>>> 48400fdd1ad87c9b1052a97785097807ebb6d0fa
+
 class Multi_Move(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -96,7 +96,7 @@ class Kong(tk.Frame):
             tk.Label(self, text="WA", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
 
 
-<<<<<<< HEAD
+
 class Multi_Move1(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -145,8 +145,6 @@ class Lead_him_to_next_scene(tk.Frame):
         tk.Button(self, text="confirm", command=lambda: master.switch_frame(Campus)).pack()
 
 
-=======
->>>>>>> 48400fdd1ad87c9b1052a97785097807ebb6d0fa
 Lu_Dialogue = {1:"好來，今天我們要教的東西吼。",2:"ㄜ...那個",3:"那個....",4:"我剛剛恍神了，我們重來一次。",5:"BlaBlaBla...",6:"我們今天的課程就到這邊結束。",7:"請按下Cancel回到上一頁"}
 Lu_Dialogue_State = 1
 class Lu(tk.Frame):
@@ -164,7 +162,6 @@ class Lu(tk.Frame):
 class Multi_conver(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-<<<<<<< HEAD
         tk.Label(self, text="討論室", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         tk.Button(self, text="討論室A", command=lambda: master.switch_frame(Multi_converA)).pack()
         tk.Button(self, text="討論室B", command=lambda: master.switch_frame(Multi_converB)).pack()
@@ -333,20 +330,6 @@ class Multi_Use_converA_tableC_computer(tk.Frame):
         else:
             messagebox.showinfo("文字轉換器", "錯誤資訊，請稍後再輸入")
 # 綜合大樓結束
-=======
-        tk.Label(self, text=Lu_Dialogue[Lu_Dialogue_State], font=('Helvetica', 18, "bold")).grid(row=0, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
-
-        if Lu_Dialogue_State < 7:
-            tk.Button(self, text="Next",command=lambda: master.switch_frame(Lu)).grid(row=1, column=0, columnspan=1, sticky="n"+"e"+"s"+"w")
-        if Lu_Dialogue_State >= 7:
-            tk.Button(self, text="Cancel",
-                    command=lambda: master.switch_frame(Multi_Audi_Talk)).grid(row=1, column=1, columnspan=2, sticky="n"+"e"+"s"+"w")
-        Lu_Dialogue_State += 1
-        if Lu_Dialogue_State >= 7:
-            Lu_Dialogue_State = 7
-
-
->>>>>>> 48400fdd1ad87c9b1052a97785097807ebb6d0fa
 
 class Dorm(tk.Frame):
     def __init__(self, master):
@@ -560,8 +543,17 @@ class Maslow(tk.Frame):
         tk.Button(self, text="Cancel",
                   command=lambda: master.switch_frame(Counsel_Talk)).grid(row=2, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
 
-# 這裡開始綜合大樓talk
 
+def Change_Backpack(thing):  # Change_Backpack('Contract');print(Backpack['Contract'])
+    global Thing_Backpack
+    Thing_Backpack[thing]=1
+    return
+
+def Check_Thing(thing):  # Check_Thing('Contract')
+    global Thing_Backpack
+    return Thing_Backpack[thing]
+
+Thing_Backpack={'Contract':0,'Coin':0,'Seal':0,'Light_Bulb':0,'Gross':0,'ID_Card':0,'Cat_Stick':0,'Diploma':0}
 
 if __name__ == "__main__":
     app = SampleApp()
