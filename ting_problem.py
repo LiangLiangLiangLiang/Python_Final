@@ -88,7 +88,6 @@ class Kong(tk.Frame):
     def Input(self):
         if self.print_.get() == "print(\"Hello World.\")":
             tk.Label(self, text="AC", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
-            tk.Button(self, text="Next", command=lambda: self.master.switch_frame(Multi)).grid(row=2, column=0, columnspan=5, sticky="n" + "e" + "s" + "w")
         else:
             tk.Label(self, text="WA", font=('Helvetica', 18, "bold")).grid(row=4, column=0,columnspan=5, sticky="n"+"e"+"s"+"w")
 
