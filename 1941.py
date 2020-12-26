@@ -4,6 +4,17 @@ except:
     import tkinter as tk
 import tkinter.messagebox
 state = 1
+  
+def Change_Backpack(thing):  # Change_Backpack('Contract');print(Backpack['Contract'])
+    global Backpack
+    Backpack[thing]=1
+    return
+
+def Check_Thing(thing):  # Check_Thing('Contract')
+    global Backpack
+    return Backpack[thing]
+
+Backpack={'Contract':0,'Coin':0,'Seal':0,'Light_Bulb':0,'Gross':0,'ID_Card':0,'Diploma':0}
 
 class SampleApp(tk.Tk):
     def __init__(self):
@@ -97,11 +108,23 @@ class Dorm_Move(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Label(self, text="要去哪裡?", font=('Helvetica', 18, "bold"), bg = "yellow").pack(side="top", fill="x", pady=5)
-        tk.Button(self, text="房間",command=lambda: master.switch_frame(Dorm_Room)).pack()
-        tk.Button(self, text="舍監的辦公室",command=lambda: master.switch_frame(Dorm_Janitor)).pack()
-        tk.Button(self, text="洗衣間",command=lambda: master.switch_frame(Dorm_Laundry)).pack()
-        tk.Button(self, text="後門",command=lambda: master.switch_frame(Dorm_BackDoor)).pack()
-        tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Dorm)).pack()
+        if Backpack["Seal"] == 0:
+            tk.Button(self, text="房間",command=lambda: master.switch_frame(Dorm_Room)).pack()
+            tk.Button(self, text="舍監的辦公室",command=lambda: master.switch_frame(Dorm_Janitor)).pack()
+            tk.Button(self, text="洗衣間",command=lambda: master.switch_frame(Dorm_Laundry)).pack()
+            tk.Button(self, text="後門",command=lambda: master.switch_frame(Dorm_BackDoor)).pack()
+            tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Dorm)).pack()
+        else:
+            tk.Button(self, text="房間",command=lambda: master.switch_frame(Dorm_No)).pack()
+            tk.Button(self, text="舍監的辦公室",command=lambda: master.switch_frame(Dorm_No)).pack()
+            tk.Button(self, text="洗衣間",command=lambda: master.switch_frame(Dorm_No)).pack()
+            tk.Button(self, text="後門",command=lambda: master.switch_frame(Dorm_BackDoor)).pack()
+            tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Dorm)).pack()
+class Dorm_No(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="門鎖起來了!", font=('Helvetica', 18, "bold"), bg = "red").pack(side="top", fill="x", pady=5)
+        tk.Button(self, text="Back to Dorm",command=lambda: master.switch_frame(Dorm_Move)).pack()
 d1_Dorm_Room = dict()
 d1_Dorm_Room = {1:"(" + "看到室友站在梯子上弄著燈泡" + ")", 2:"燈泡壞掉了，叫舍監好久了都沒來"}
 class Dorm_Room(tk.Frame):
@@ -127,11 +150,9 @@ d1_Dorm_Janitor = {1:"(咳咳咳)"  + "\n我當了71年的舍監，從來沒遇�
         11:"哇真的很謝謝你^_^" + "\n感謝你今天的幫忙" + "\n願上帝保佑你",
         12:"Next", 13:"Next", 14:"好挖", 15:"前往xxx房間換燈泡",16:"好!" + "(前往洗衣間)",17:"ㄘㄟˊ我根本不用來啊" + "\n回去找舍監",
         18:"(OS:哪來這麼多事可以做)" + "\n好~~~" + "(前往後門)", 19:"跟他說話", 20:"", 21:"Let's Go!!", 22:"助人為快樂之本......吧" + "\n印章又能做甚麼..." + "\n(Back to Campus)"}
-aline = ""
 class Dorm_Janitor_Talk(tk.Frame):
     def __init__(self, master):
         global state
-        global aline
         tk.Frame.__init__(self, master)
         tk.Label(self, text = d1_Dorm_Janitor[state], font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
         if state == 9:
@@ -140,9 +161,9 @@ class Dorm_Janitor_Talk(tk.Frame):
         elif state == 7:
             tk.Button(self, text = d1_Dorm_Janitor[state + 11],command=lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "獲得了印章!"), master.switch_frame(Dorm_Janitor_Talk)]).pack()
         elif state == 11:
-            tk.Button(self, text = d1_Dorm_Janitor[state + 11],command=lambda: master.switch_frame(Dorm_Move)).pack()
+            tk.Button(self, text = d1_Dorm_Janitor[state + 11],command=lambda: master.switch_frame(Campus)).pack()
             state = 0
-            aline += "1"
+            Change_Backpack('Seal')
         else:
             tk.Button(self, text = d1_Dorm_Janitor[state + 11],command=lambda: master.switch_frame(Dorm_Janitor_Talk)).pack()
         state += 1
@@ -164,28 +185,28 @@ x = 1
 class Dorm_BackDoor(tk.Frame):
     def __init__(self, master):
         global state
-        global aline
+        global Backpack
         global x
         tk.Frame.__init__(self, master)
-        if aline.find("1") == -1 and state == x:
+        if Backpack["Seal"] == 0 and state == x:
             tk.Label(self, text = "(" + "看見一個郵差" + ")", font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = "跟他說話",command=lambda: master.switch_frame(Dorm_BackDoor)).pack()
             x = state
             state += 1
-        elif aline.find("1") == -1 and state == x + 1:
+        elif Backpack["Seal"] == 0 and state == x + 1:
             tk.Label(self, text = "..........(" + "一片安靜" + ")", font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = "真無聊，回到宿舍大廳好了",command=lambda: master.switch_frame(Dorm_Move)).pack()
             x = 1
             state = 1
-        elif aline.find("1") != -1:
-            tk.Label(self, text = "這裡沒有人了", font=('Helvetica', 18, "bold"), bg='yellow').pack(side="top", fill="x", pady=5)
+        elif Backpack["Seal"] == 1:
+            tk.Label(self, text = "這裡沒有人了", font=('Helvetica', 18, "bold"), bg='red').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = "Back to Dorm",command=lambda: master.switch_frame(Dorm_Move)).pack()
         
 class Social_Science_Library_Move(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Label(self, text="管理員:「你有學生證嗎」", font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
-        if aline.find("2") != -1:
+        if Backpack["ID_Card"] == 1:
             tk.Button(self, text="有",command=lambda: master.switch_frame(Social_Science_Library_Yes)).pack()
             tk.Button(self, text="沒有",command=lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "你明明就有!"), master.switch_frame(Social_Science_Library_Yes)]).pack()
         else:
@@ -200,24 +221,22 @@ d1_SS_Library_Yes = {1:"進入社科圖", 2:"(" + "腦中一閃而過" + ")" + "
 d1_SS_Library_No = dict()
 d1_SS_Library_No = {1:"進入社科圖", 2:"管理員:「同學你沒有刷卡，不能進來ㄛ」", 3:"(" + "等了30秒" + ")" + "有人要進去了!我可以偷偷跟著進去吧",
         4:"管理員:「你又來!沒有學生證就出去!」", 5:"Go!", 6:"好吧...", 7:"跟在那個人後面偷偷進去嘻嘻嘻", 8:"又失敗了...還是乖乖回去社科院上課吧"}
-y = 0
 class Social_Science_Library_Yes(tk.Frame):
     def __init__(self, master):
         global state
-        global y
         tk.Frame.__init__(self, master)
-        if state == 7 and y == 0:
+        if state == 7 and Backpack["Diploma"] == 0:
             tk.Label(self, text = d1_SS_Library_Yes[state], font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = d1_SS_Library_Yes[state + 8],command=lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "拿到了沾滿貓咪口水的管中閔畢業證書!"), master.switch_frame(Social_Science_Library_Yes)]).pack()
-        elif state == 8 and y == 0:
+        elif state == 8 and Backpack["Diploma"] == 0:
             tk.Label(self, text = d1_SS_Library_Yes[state], font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = d1_SS_Library_Yes[state + 8],command=lambda: master.switch_frame(Campus)).pack()
             state = 0
-            y = 1
-        elif state != 7 and state != 8 and y == 0:
+            Change_Backpack('Diploma')
+        elif state != 7 and state != 8 and Backpack["Diploma"] == 0:
             tk.Label(self, text = d1_SS_Library_Yes[state], font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = d1_SS_Library_Yes[state + 8],command=lambda: master.switch_frame(Social_Science_Library_Yes)).pack()
-        elif state != 7 and state != 8 and y == 1:
+        elif state != 7 and state != 8 and Backpack["Diploma"] == 1:
             tk.Label(self, text = "社科圖關門了!!!", font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = "Back to Campus",command=lambda: master.switch_frame(Campus)).pack()
         state += 1
@@ -225,14 +244,14 @@ class Social_Science_Library_No(tk.Frame):
     def __init__(self, master):
         global state
         tk.Frame.__init__(self, master)
-        if state == 4 and y == 0:
+        if state == 4 and Backpack["Diploma"] == 0:
             tk.Label(self, text = d1_SS_Library_No[state], font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = d1_SS_Library_No[state + 4],command=lambda: master.switch_frame(Social_Science_Move)).pack()
             state = 0
-        elif state != 4 and y == 0:
+        elif state != 4 and Backpack["Diploma"] == 0:
             tk.Label(self, text = d1_SS_Library_No[state], font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = d1_SS_Library_No[state + 4],command=lambda: master.switch_frame(Social_Science_Library_No)).pack()
-        elif state != 4 and y == 1:
+        elif state != 4 and Backpack["Diploma"] == 1:
             tk.Label(self, text = "社科圖關門了!!!", font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = "Back to Campus",command=lambda: master.switch_frame(Campus)).pack()
         state += 1
@@ -321,7 +340,6 @@ d1_No_ID_Cat = {1:"ㄟˊ好多貓貓耶:)好可愛XD", 2:"貓:「喵喵喵」",
 class No_ID_Cat(tk.Frame):
     def __init__(self, master):
         global state
-        global y
         tk.Frame.__init__(self, master)
         if state == 3:
             tk.Label(self, text = d1_No_ID_Cat[state], font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
@@ -330,7 +348,7 @@ class No_ID_Cat(tk.Frame):
             tk.Label(self, text = d1_No_ID_Cat[state], font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = d1_No_ID_Cat[state + 4],command=lambda: master.switch_frame(Campus)).pack()
             state = 0
-            y = 1
+            Change_Backpack('Diploma')
         else:
             tk.Label(self, text = d1_No_ID_Cat[state], font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = d1_No_ID_Cat[state + 4],command=lambda: master.switch_frame(No_ID_Cat)).pack()
