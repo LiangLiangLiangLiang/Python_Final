@@ -37,7 +37,6 @@ class Campus(tk.Frame):
         tk.Button(self, text="Move",command=lambda: master.switch_frame(Campus_Move)).pack()
         tk.Button(self, text="Talk",command=lambda: master.switch_frame(Campus_Talk)).pack()
         tk.Button(self, text="Use",command=lambda: master.switch_frame(Campus_Use)).pack()
-
 class Campus_Move(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)            
@@ -53,24 +52,17 @@ class Social_Science_Library(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Label(self, text="社科圖", font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
-        tk.Button(self, text="Move",command=lambda: master.switch_frame(Social_Science_Library_Move)).pack()
-        tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
-
+        if Backpack["ID_Card"] == 1:
+            tk.Button(self, text="Move",command=lambda: master.switch_frame(Social_Science_Library_Yes)).pack()
+            tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
+        else:
+            tk.Button(self, text="Move",command=lambda: master.switch_frame(Social_Science_Library_No)).pack()
+            tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
 class Dorm(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Label(self, text="水源宿舍", font=('Helvetica', 18, "bold"),bg='yellow').pack(side="top", fill="x", pady=5)
         tk.Button(self, text="Move",command=lambda: master.switch_frame(Dorm_Move)).pack()
-        tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
-
-class Social_Science(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="Social_Science", font=('Helvetica', 18, "bold"),bg='lawngreen').pack(side="top", fill="x", pady=5)
-        tk.Button(self, text="Look",command=lambda: master.switch_frame(Social_Science_Look)).pack()
-        tk.Button(self, text="Move",command=lambda: master.switch_frame(Social_Science_Move)).pack()
-        tk.Button(self, text="Talk",command=lambda: master.switch_frame(Social_Science_Talk)).pack()
-        tk.Button(self, text="Use",command=lambda: master.switch_frame(Social_Science_Use)).pack()
         tk.Button(self, text="Cancel",command=lambda: master.switch_frame(Campus_Move)).pack()
 
 class Administration(tk.Frame):
@@ -202,16 +194,6 @@ class Dorm_BackDoor(tk.Frame):
             tk.Label(self, text = "這裡沒有人了", font=('Helvetica', 18, "bold"), bg='red').pack(side="top", fill="x", pady=5)
             tk.Button(self, text = "Back to Dorm",command=lambda: master.switch_frame(Dorm_Move)).pack()
         
-class Social_Science_Library_Move(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="管理員:「你有學生證嗎」", font=('Helvetica', 18, "bold"),bg='aqua').pack(side="top", fill="x", pady=5)
-        if Backpack["ID_Card"] == 1:
-            tk.Button(self, text="有",command=lambda: master.switch_frame(Social_Science_Library_Yes)).pack()
-            tk.Button(self, text="沒有",command=lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "你明明就有!"), master.switch_frame(Social_Science_Library_Yes)]).pack()
-        else:
-            tk.Button(self, text="有",command=lambda: [tkinter.messagebox.showinfo(title = "訊息框", message = "你明明就沒有!"), master.switch_frame(Social_Science_Library_No)]).pack()
-            tk.Button(self, text="沒有",command=lambda: master.switch_frame(Social_Science_Library_No)).pack()
 d1_SS_Library_Yes = dict()
 d1_SS_Library_Yes = {1:"進入社科圖", 2:"(" + "腦中一閃而過" + ")" + "\n來寫程式設計作業好了", 3:"class是甚麼東東啊要麼用...",
         4:"(" + "再過一陣子" + ")" + "好無聊ㄛ想去玩貓~~", 5:"ㄟˊ有貓貓耶:)好可愛XD", 6:"貓:「喵喵喵」",
