@@ -600,15 +600,6 @@ class Multi_Use_converA_tableC_computer(tk.Frame):
             messagebox.showinfo("文字轉換器", "錯誤資訊，請稍後再輸入")
 # 綜合大樓結束
 
-class Social_Science(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="社科院", font=('Helvetica', 18, "bold")).grid(row=0, column=0, columnspan=6, rowspan=2)
-        tk.Button(self, text="Move",
-                  command=lambda: master.switch_frame(Social_Science_Move)).grid(row=2, column=3, columnspan=3, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="Cancel",
-                  command=lambda: master.switch_frame(Campus)).grid(row=4, column=0, columnspan=6, sticky="n"+"e"+"s"+"w")
-
 class Administration(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -629,27 +620,12 @@ class Counsel(tk.Frame):
         tk.Button(self, text="Cancel",
                   command=lambda: master.switch_frame(Campus)).grid(row=4, column=0, columnspan=6, sticky="n"+"e"+"s"+"w")
 
-class Bus(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        tk.Label(self, text="Bus", font=('Helvetica', 18, "bold")).grid(row=0, column=0, columnspan=6, rowspan=2)
-        tk.Button(self, text="Look",
-                  command=lambda: master.switch_frame(Bus_Look)).grid(row=2, column=0, columnspan=3, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="Move",
-                  command=lambda: master.switch_frame(Bus_Move)).grid(row=2, column=3, columnspan=3, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="Talk",
-                  command=lambda: master.switch_frame(Bus_Talk)).grid(row=3, column=0, columnspan=3, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="Use",
-                  command=lambda: master.switch_frame(Bus_Use)).grid(row=3, column=3, columnspan=3, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="Cancel",
-                  command=lambda: master.switch_frame(Campus)).grid(row=4, column=0, columnspan=6, sticky="n"+"e"+"s"+"w")
-
 class Campus_Move(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)        
         tk.Button(self, text="綜合大樓",command=lambda: master.switch_frame(Multi)).grid(row=0, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="水源宿舍",command=lambda: master.switch_frame(Dorm)).grid(row=0, column=2, columnspan=2, sticky="n"+"e"+"s"+"w")
-        tk.Button(self, text="社科院",command=lambda: master.switch_frame(Social_Science)).grid(row=1, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
+        tk.Button(self, text="社科圖",command=lambda: master.switch_frame(Social_Science_Library)).grid(row=1, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="行政大樓",command=lambda: master.switch_frame(Administration)).grid(row=1, column=2, columnspan=2, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="心輔中心",command=lambda: master.switch_frame(Counsel)).grid(row=2, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
         if Check_Thing('Diploma')==Check_Thing('Contract')==Check_Thing('Seal')==1:
