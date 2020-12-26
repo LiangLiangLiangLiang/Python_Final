@@ -48,10 +48,10 @@ class Multi(tk.Frame):
 class Multi_Move(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        tk.Button(self, text="販賣機", command=lambda: master.switch_frame(Multi_sale)).pack()
-        tk.Button(self, text="綜合大講堂", command=lambda: master.switch_frame(Multi_Audi)).pack()
-        tk.Button(self, text="討論室", command=lambda: master.switch_frame(Multi_conver)).pack()
-        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi)).pack()
+        tk.Button(self, text="販賣機", command=lambda: master.switch_frame(Multi_sale)).grid(row=0, column=0, columnspan=3, sticky="n"+"e"+"s"+"w")
+        tk.Button(self, text="綜合大講堂", command=lambda: master.switch_frame(Multi_Audi)).grid(row=0, column=3, columnspan=2, sticky="n"+"e"+"s"+"w")
+        tk.Button(self, text="討論室", command=lambda: master.switch_frame(Multi_conver)).grid(row=1, column=0, columnspan=3, sticky="n"+"e"+"s"+"w")
+        tk.Button(self, text="Cancel", command=lambda: master.switch_frame(Multi)).grid(row=1, column=3, columnspan=2, sticky="n"+"e"+"s"+"w")
 
 
 class Multi_Audi(tk.Frame):
@@ -182,6 +182,12 @@ class Campus_Move(tk.Frame):
         tk.Button(self, text="Cancel",
                   command=lambda: master.switch_frame(Campus)).grid(row=3, column=0, columnspan=4, sticky="n"+"e"+"s"+"w")
 
+class Campus_Look(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Label(self, text="寬闊的椰林大道上行人與腳踏車來來去去\n只有你站在原地傻看。", font=('Helvetica', 18, "bold")).grid(row=0, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
+        tk.Button(self, text="Cancel",
+                  command=lambda: master.switch_frame(Campus)).grid(row=1, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
 
 # 這邊是在校園裡對話（跟傅斯年）的部分
 Fudict = {1:"去上課",2:"去反省"}
@@ -194,9 +200,9 @@ Fu_State = 1
 class Campus_Talk(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)        
-        tk.Label(self, text=Fudict[Fu_State], font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Label(self, text=Fudict[Fu_State], font=('Helvetica', 18, "bold")).grid(row=0, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
         tk.Button(self, text="Cancel",
-                  command=lambda: master.switch_frame(Campus)).pack()
+                  command=lambda: master.switch_frame(Campus)).grid(row=1, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
 
 # 此行後為行政大樓和心輔中心
 class Administration_Move(tk.Frame):
