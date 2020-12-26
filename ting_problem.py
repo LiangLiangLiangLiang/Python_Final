@@ -301,6 +301,7 @@ class Multi_Use_converA_tableC_computer(tk.Frame):
             tk.Label(self, text="若覺得渴的話不妨到飲料機看看", font=('Helvetica', 12)).pack()
         else:
             messagebox.showinfo("文字轉換器", "錯誤資訊，請稍後再輸入")
+# 綜合大樓結束
 
 
 class Dorm(tk.Frame):
@@ -515,7 +516,17 @@ class Maslow(tk.Frame):
         tk.Button(self, text="Cancel",
                   command=lambda: master.switch_frame(Counsel_Talk)).grid(row=2, column=0, columnspan=2, sticky="n"+"e"+"s"+"w")
 
-# 這裡開始綜合大樓talk
+
+def Change_Backpack(thing):  # Change_Backpack('Contract');print(Backpack['Contract'])
+    global Thing_Backpack
+    Backpack[thing]=1
+    return
+
+def Check_Thing(thing):  # Check_Thing('Contract')
+    global Thing_Backpack
+    return Backpack[thing]
+
+Backpack={'Contract':0,'Coin':0,'Seal':0,'Light_Bulb':0,'Gross':0,'ID_Card':0,'Cat_Stick':0,'Diploma':0}
 
 
 if __name__ == "__main__":
